@@ -1,0 +1,31 @@
+* {
+    margin: 0px;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+h1 {
+    font-family: 'Manrope', sans-serif;
+    text-align: center;
+    font-weight: 400;
+    color: #21232Aaa;
+}
+.image-check{
+    width: 100px;
+}
+.image-logo {
+    width: 100px;
+    opacity: 0.3;
+}
+
+.v-spacer {
+    height: 32px;
+}
+strong {
+    color: #21232A;
+}

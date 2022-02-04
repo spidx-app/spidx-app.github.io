@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACME Corporation</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+
+    <script>
+        window.onload = () => {
+            var biometrics = JSON.parse(sessionStorage.getItem("biometrics"))
+            
+            // User photo
+            var image = document.getElementById("userFace");
+            image.src = 'data:image/png;base64,' + biometrics[0]['content'];
+
+
+            // User Name
+            var name = document.getElementById("userName")
+            name.innerHTML = sessionStorage.getItem("biographics").replace(/ .*/,'').substring(1);;
+        
+        }
+    </script>
+
+</head>
+<body>
+    <img id="userFace" src="" style="background-color: #fafafa; border-radius: 10000px; height: 100px; width: 100px; object-fit: cover;">
+    <div class="v-spacer"></div>
+
+    <h1>Hey <span id="userName"></span>, welcome to<br>
+        <strong> ACME </strong> <font style="font-weight: 400; color: #21232A">Corporation</font>
+        </h1>
+
+</body>
+</html>

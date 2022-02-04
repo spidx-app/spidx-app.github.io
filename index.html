@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACME Corporation</title>
+
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link href="http://fonts.cdnfonts.com/css/manrope" rel="stylesheet">
+
+    <script src="https://spidx.s3.amazonaws.com/spidx-auth/spidx_auth.js"></script>
+
+    <script>
+        function changeAuth() {
+            window.SpidxAuth.init({
+                apiKey: document.getElementById('apiKey').value,
+                useCaseId: document.getElementById('useCaseId').value,  
+                environment:  document.getElementById('environment').value  
+            });
+            toggleConfig();
+        }
+        window.onload = () => {
+
+            window.SpidxAuth.transactionCallback = async (data) => {
+                if (data.transactionStatus == "OK") {
+                    // GET identity
+                    let collection = await window.SpidxAuth.collect(data.transactionId);
+                    let biographics = collection.biographicPackage.biographicList;
+                    let biometrics = collection.biometricPackage.biometricList;
+
+                    // Storing it in the sessionStorage
+                    sessionStorage.setItem("biographics", JSON.stringify(biographics[0]['value']));
+                    sessionStorage.setItem("biometrics", JSON.stringify(biometrics));
+                    
+                    // Redirecting
+                    window.location = "success";
+                }
+                else {
+                    window.location = "deny";
+                }
+            }
+        }
+    </script>
+
+    <script>
+        function toggleConfig(){
+            let configuration = document.getElementById("configContainer")
+            if (configuration.style.display == "none") {
+                configuration.style.display = "block"
+            }
+            else { configuration.style.display = "none"}
+        }
+    </script>
+</head>
+
+
+
+
+<body>
+    <div class="container">
+        <div class="logo-container">
+        </div>
+        <!-- content -->
+        <div class="form-container">
+            <img class="logo" src="images/acme_corp.png" alt="ACME Corp">
+            <form action="">
+                <div>
+                    <span class="label">E-mail</span>
+                    <input type="text" name="email" id="email" placeholder="Enter your email" autocomplete="email">
+                </div>
+                <div>
+                    <span class="label">Password</span>
+                    <input type="password" name="password" id="password" placeholder="********" autocomplete="current-password">
+                </div>
+                <div class="mainButton">Login</div>
+                <div class="secondaryButton">Sign up</div>
+                <div data-button_width="300" data-button_height="60" class="spidx-auth"></div>
+            </form>
+        </div>
+
+        <button class="btn_settings" onclick="toggleConfig()">Settings</button>
+        <div id="configContainer" style="display:none;">
+            <form id="config">
+                <span>Get yout API Key and Use Case ID on the <a href="https://admin.spidx.app" target=”_blank”>Spidx Admin</a></span>
+                <div>
+                    <span class="label">API Key</span>
+                    <input type="text" name="apiKey" id="apiKey" placeholder="">
+                </div>
+                <div>
+                    <span class="label">Use Case ID</span>
+                    <input type="text" name="useCaseId" id="useCaseId" placeholder="">
+                </div>
+                <div>
+                    <span class="label">Environment</span>
+                    <select name="environment" id="environment">
+                        <option value="PROD">Production</option>
+                        <option value="HOMOL">Homol</option>
+                      </select>
+                  </div>
+                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between;">
+                    <button class="btn_close">Close</button>
+                    <input class="btn_save" type="button" value="Add Spidx Button"  onclick="changeAuth()">
+                </div>
+            </form>
+        </div>
+        
+    </div>
+</body>
+
+</html>
