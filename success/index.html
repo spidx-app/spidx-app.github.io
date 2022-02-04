@@ -27,7 +27,9 @@
                 var other = document.getElementById("other_info");
                 // User Name
                 if (biographics[info]['type'] == 'FULL_NAME') {
-                    user_name.innerHTML = biographics[info]['value'].replace(/ .*/,'');
+                    user_name.innerHTML = ' '
+                    user_name.innerHTML += biographics[info]['value'].replace(/ .*/,'');
+                    user_name.innerHTML += '!'
                 }
                 else {
                     other_info.innerHTML += "<br>";
@@ -40,10 +42,10 @@
 
 </head>
 <body>
-    <img id="user_picture" src="" style="background-color: #fafafa; border-radius: 10000px; height: 100px; width: 100px; object-fit: cover;">
+    <img id="user_picture" src="/images/check.png" style="background-color: #fafafa; border-radius: 10000px; height: 100px; width: 100px; object-fit: cover;">
     <div class="v-spacer"></div>
 
-    <h1>Hey <span id="user_name"></span>, welcome to<br>
+    <h1>Hey<span id="user_name">!</span> Welcome to<br>
         <strong> ACME </strong> <font style="font-weight: 400; color: #21232A">Corporation</font>
         </h1>
     
