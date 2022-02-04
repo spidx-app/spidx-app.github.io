@@ -7,33 +7,49 @@
     <link rel="stylesheet" type="text/css" href="index.css">
 
     <script>
+        console.log("oi");
         window.onload = () => {
             var collection = JSON.parse(sessionStorage.getItem("collection"));
             let biographics = collection.biographicPackage.biographicList;
             let biometrics = collection.biometricPackage.biometricList;
 
-            let userName = biographics[0]['value']
-            
-            // User photo
-            var image = document.getElementById("userFace");
-            image.src = 'data:image/png;base64,' + biometrics[0]['content'];
+            var user_name = document.getElementById("user_name")
+            var user_picture = document.getElementById("user_picture");
 
+            for (image in biometrics) {
+                // User photo
+                if (biometrics[image]['index'] == 10) {
+                    user_picture.src = 'data:image/png;base64,' + biometrics[image]['content'];
+                }
+            }
 
-            // User Name
-            var name = document.getElementById("userName")
-            name.innerHTML = userName.replace(/ .*/,'');
+            for (info in biographics) {
+                var other = document.getElementById("other_info");
+                // User Name
+                if (biographics[info]['type'] == 'FULL_NAME') {
+                    user_name.innerHTML = biographics[info]['value'].replace(/ .*/,'');
+                }
+                else {
+                    other_info.innerHTML += "<br>";
+                    other_info.innerHTML += biographics[info]['value'];
+                }
+            }
         
         }
     </script>
 
 </head>
 <body>
-    <img id="userFace" src="" style="background-color: #fafafa; border-radius: 10000px; height: 100px; width: 100px; object-fit: cover;">
+    <img id="user_picture" src="" style="background-color: #fafafa; border-radius: 10000px; height: 100px; width: 100px; object-fit: cover;">
     <div class="v-spacer"></div>
 
-    <h1>Hey <span id="userName"></span>, welcome to<br>
+    <h1>Hey <span id="user_name"></span>, welcome to<br>
         <strong> ACME </strong> <font style="font-weight: 400; color: #21232A">Corporation</font>
         </h1>
+    
+    <div id="other_info" class="other_info">
+        <h5>Other information</h5>
+    </div>
 
 </body>
 </html>

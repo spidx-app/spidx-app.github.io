@@ -15,6 +15,12 @@ h1 {
     font-weight: 400;
     color: #21232Aaa;
 }
+
+h5 {
+    margin: 0px; 
+    padding: 0px;
+}
+
 .image-check{
     width: 100px;
 }
@@ -38,4 +44,15 @@ strong {
 
 .fingerprint > * {
     margin: 4px;
+}
+
+.other_info {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #21232A90;
+    font-family: sans-serif;
+    margin: 20px 0px;
 }
