@@ -19,7 +19,11 @@
                 useCaseId: document.getElementById('useCaseId').value,  
                 environment:  document.getElementById('environment').value  
             });
+
             toggleConfig();
+
+            var spidxButton = document.getElementsByClassName("spidx-auth");
+            spidxButton.style.display = "block";
         }
         window.onload = () => {
 
@@ -27,6 +31,7 @@
                 if (data.transactionStatus == "OK") {
                     // GET identity
                     let collection = await window.SpidxAuth.collect(data.transactionId);
+                    sessionStorage.setItem("collection", JSON.stringify(collection));
                     let biographics = collection.biographicPackage.biographicList;
                     let biometrics = collection.biometricPackage.biometricList;
 
@@ -76,11 +81,11 @@
                 </div>
                 <div class="mainButton">Login</div>
                 <div class="secondaryButton">Sign up</div>
-                <div data-button_width="300" data-button_height="60" class="spidx-auth"></div>
+                <div style="display: none" data-layout_setup="modal" data_button-width="300px" data_button-width="40px"  class="spidx-auth"></div>
             </form>
         </div>
 
-        <button class="btn_settings" onclick="toggleConfig()">Settings</button>
+        <button class="btn_settings" onclick="toggleConfig()">Add Spidx</button>
         <div id="configContainer" style="display:none;">
             <form id="config">
                 <span>Get yout API Key and Use Case ID on the <a href="https://admin.spidx.app" target=”_blank”>Spidx Admin</a></span>

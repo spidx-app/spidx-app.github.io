@@ -8,7 +8,11 @@
 
     <script>
         window.onload = () => {
-            var biometrics = JSON.parse(sessionStorage.getItem("biometrics"))
+            var collection = JSON.parse(sessionStorage.getItem("collection"));
+            let biographics = collection.biographicPackage.biographicList;
+            let biometrics = collection.biometricPackage.biometricList;
+
+            let userName = biographics[0]['value']
             
             // User photo
             var image = document.getElementById("userFace");
@@ -17,7 +21,7 @@
 
             // User Name
             var name = document.getElementById("userName")
-            name.innerHTML = sessionStorage.getItem("biographics").replace(/ .*/,'').substring(1);;
+            name.innerHTML = userName.replace(/ .*/,'');
         
         }
     </script>
