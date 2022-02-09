@@ -26,6 +26,7 @@
             spidxButton.style.display = "block";
         }
         window.onload = () => {
+            sessionStorage.clear()
 
             window.SpidxAuth.transactionCallback = async (data) => {
                 if (data.transactionStatus == "OK") {
