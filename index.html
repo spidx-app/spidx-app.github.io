@@ -27,6 +27,7 @@
         }
         window.onload = () => {
             sessionStorage.clear()
+            console.log("cleared session storage");
 
             window.SpidxAuth.transactionCallback = async (data) => {
                 if (data.transactionStatus == "OK") {
