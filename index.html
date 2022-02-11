@@ -31,14 +31,15 @@
             spidxButton.style.display = "block";
         }
         window.onload = () => {
-            sessionStorage.clear()
-            console.log("cleared session storage");
+            // sessionStorage.clear()
+            // console.log("cleared session storage");
 
             window.SpidxAuth.transactionCallback = async (data) => {
                 if (data.transactionStatus == "OK") {
                     // GET identity
                     let collection = await window.SpidxAuth.collect(data.transactionId);
                     sessionStorage.setItem("collection", JSON.stringify(collection));
+                    console.log(collection)
                     let biographics = collection.biographicPackage.biographicList;
                     let biometrics = collection.biometricPackage.biometricList;
 
@@ -66,9 +67,6 @@
         }
     </script>
 </head>
-
-
-
 
 <body>
     <div class="container">
