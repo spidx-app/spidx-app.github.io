@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,21 +14,35 @@
 
 
     <title>ACME Corporation</title>
-    
+
     <script src="https://resources.spidx.app/spidx_auth.js"></script>
-    
+
     <script>
-      window.onload = () => {
+        window.onload = () => {
             window.SpidxAuth.init({
                 apiKey: 'DC574F7B-4348-4120-859F-3ACCB28715E2',       // Change to your API Key
                 useCaseId: '723C5939-F623-4E3D-9829-80D127E22ECF',  // Change to your Use Case ID
                 elemId: 'spidx-auth',
                 environment: 'PROD'
             })
-            
+
             window.SpidxAuth.transactionCallback = async (data) => {
-                if (data.transactionStatus == 'OK') {
+                if (data.transactionStatus == "OK") {
+                    // GET identity
                     let collection = await window.SpidxAuth.collect(data.transactionId);
+                    sessionStorage.setItem("collection", JSON.stringify(collection));
+                    let biographics = collection.biographicPackage.biographicList;
+                    let biometrics = collection.biometricPackage.biometricList;
+
+                    // Storing it in the sessionStorage
+                    sessionStorage.setItem("biographics", JSON.stringify(biographics[0]['value']));
+                    sessionStorage.setItem("biometrics", JSON.stringify(biometrics));
+
+                    // Redirecting
+                    window.location = "../success";
+                }
+                else {
+                    window.location = "../deny";
                 }
             }
         }
@@ -40,7 +55,7 @@
         </div>
         <!-- content -->
         <div class="form-container">
-            <img class="logo" src="images/acme_corp.png" alt="ACME Corp">
+            <img class="logo" src="../images/acme_corp.png" alt="ACME Corp">
             <form action="">
                 <div>
                     <span class="label">E-mail</span>
