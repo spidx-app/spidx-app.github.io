@@ -31,11 +31,9 @@
             spidxButton.style.display = "block";
 
             window.SpidxAuth.transactionCallback = async (data) => {
-                console.log(data)
                 if (data.transactionStatus == "OK") {
                     // GET identity
                     let collection = await window.SpidxAuth.collect(data.transactionId);
-                    console.log(collection)
                     sessionStorage.setItem("collection", JSON.stringify(collection));
                     let biographics = collection.biographicPackage.biographicList;
                     let biometrics = collection.biometricPackage.biometricList;
