@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,47 +17,64 @@
             var user_name = document.getElementById("user_name")
             var user_picture = document.getElementById("user_picture");
 
+            var download_fingerprint_button = document.createElement("a");
+
+            var shouldDownload = false;
+            var hasWSQimages = false;
+            if (Object.keys(biometrics).length > 1) {
+                shouldDownload = confirm("Do you want to download WSQ images?")
+            }
+
             for (image in biometrics) {
                 // User photo
                 if (biometrics[image]['index'] == 10) {
                     user_picture.src = 'data:image/png;base64,' + biometrics[image]['content'];
                 }
+                // User fingerprints
+                else {
+                    if (shouldDownload) {
+                        download_fingerprint_button.href = "data:image/png;base64," + biometrics[image]['content']; //Image Base64 Goes here
+                        download_fingerprint_button.download = "fingerprint_"+ image +".wsq";           
+                        download_fingerprint_button.click();
+                    }
+                }
             }
 
             var grid_picture = document.getElementsByClassName("grid-item-picture")[0];
-            grid_picture.style.gridRowEnd =  Object.keys(biographics).length + 2;
+            grid_picture.style.gridRowEnd = Object.keys(biographics).length + 2;
 
             var other_info = document.getElementsByClassName("grid")[0];
 
             other_info.innerHTML += '\
                 <div> <span>Spidx Number</span></div> \
-                <div>' +  userInformation.spidx  + '</div>'
+                <div>' + userInformation.spidx + '</div>'
 
-            for (info in biographics) { 
+            for (info in biographics) {
                 other_info.innerHTML += '\
                 <div> <span>' + biographics[info]['type'] + '</span></div> \
-                <div>' +  biographics[info]['value']  + '</div>'
+                <div>' + biographics[info]['value'] + '</div>'
             }
-            
-
-
         }
+
     </script>
 
 </head>
+
 <body>
-    <div class="container">
-        <div class="grid">
-            <div class="grid-item-picture">
-                <div class="image">
-                    <img id="user_picture" src="/images/check.png" alt="">
+    <div>
+        <div class="container">
+            <div class="grid">
+                <div class="grid-item-picture">
+                    <div class="image">
+                        <img id="user_picture" src="/images/check.png" alt="">
+                    </div>
                 </div>
-            </div>       
-            
+
+            </div>
         </div>
     </div>
 
 
-
 </body>
+
 </html>

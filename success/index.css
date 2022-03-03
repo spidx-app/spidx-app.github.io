@@ -4,6 +4,14 @@
     font-family: 'Manrope', sans-serif;
     color: #21232A;
 }
+body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 h1 {
     text-align: center;
@@ -39,8 +47,6 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
 }
 
 .image {
@@ -53,4 +59,12 @@ h1 {
     display: flex;
     width: 100%;
     object-fit: cover;
+}
+
+.primaryButton {
+    background-color: #145BCC;
+    color: white;
+    padding: 8px;
+    cursor: pointer;
+    margin: 8px;
 }

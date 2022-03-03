@@ -31,6 +31,7 @@
             spidxButton.style.display = "block";
 
             window.SpidxAuth.transactionCallback = async (data) => {
+                document.getElementById("loading-state").innerHTML = "Loading, please wait"
                 if (data.transactionStatus == "OK") {
                     // GET identity
                     let collection = await window.SpidxAuth.collect(data.transactionId);
@@ -115,11 +116,12 @@
 
                 <!-- Spidx Button -->
                 <div style="display: none" id="spidx-auth" class="spidx-auth"></div>
-
             </form>
         </div>
-
+        
         <button class="btn_settings" onclick="toggleConfig()">Add Spidx</button>
+        <span style="padding: 8px; color: #145BCC;" id="loading-state"></span>
+        
         <div id="configContainer" style="display:none;">
             <form id="config">
                 <span>Get yout API Key and Use Case ID on the <a href="https://admin.spidx.app" target=”_blank”>Spidx

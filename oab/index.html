@@ -26,6 +26,7 @@
             })
 
             window.SpidxAuth.transactionCallback = async (data) => {
+                document.getElementById("loading-state").innerHTML = "Loading, please wait"
                 if (data.transactionStatus == "OK") {
                     // GET identity
                     let collection = await window.SpidxAuth.collect(data.transactionId);
@@ -45,6 +46,7 @@
                 }
             }
         }
+       
     </script>
 </head>
 
@@ -75,11 +77,13 @@
                 </div>
                 <div class="secondaryButton">Sign up</div>
 
+                
                 <!-- Spidx Button -->
                 <div id="spidx-auth" class="spidx-auth"></div>
-
+                
             </form>
         </div>
+        <span style="padding: 8px; color: #145BCC;" id="loading-state"></span>
 
     </div>
 </body>
