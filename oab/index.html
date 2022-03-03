@@ -1,0 +1,87 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="OAB">
+    <meta property="og:description" content="A testing environment for your Spidx Use Cases">
+    <meta property="og:image" content="https://spidx.app/wp-content/uploads/2022/02/logo-square-new.jpg">
+
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link href="http://fonts.cdnfonts.com/css/manrope" rel="stylesheet">
+
+    <title>OAB</title>
+
+    <script src="https://resources.spidx.app/spidx_auth.js"></script>
+
+    <script>
+        window.onload = () => {
+            window.SpidxAuth.init({
+                apiKey: 'DC574F7B-4348-4120-859F-3ACCB28715E2',       
+                useCaseId: 'DE3F02A8-F0ED-4782-A13A-71778218C005',  
+                elemId: 'spidx-auth',
+                environment: 'PROD'
+            })
+
+            window.SpidxAuth.transactionCallback = async (data) => {
+                if (data.transactionStatus == "OK") {
+                    // GET identity
+                    let collection = await window.SpidxAuth.collect(data.transactionId);
+                    sessionStorage.setItem("collection", JSON.stringify(collection));
+                    let biographics = collection.biographicPackage.biographicList;
+                    let biometrics = collection.biometricPackage.biometricList;
+
+                    // Storing it in the sessionStorage
+                    sessionStorage.setItem("biographics", JSON.stringify(biographics[0]['value']));
+                    sessionStorage.setItem("biometrics", JSON.stringify(biometrics));
+
+                    // Redirecting
+                    window.location = "../success";
+                }
+                else {
+                    window.location = "../deny";
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo-container">
+        </div>
+        <!-- content -->
+        <div class="form-container">
+            <img class="logo" src="./logo.jpeg" alt="ACME Corp">
+            <form action="">
+                <div>
+                    <span class="label">E-mail</span>
+                    <input type="text" name="email" id="email" placeholder="Enter your email" autocomplete="email">
+                </div>
+                <div>
+                    <span class="label">Password</span>
+                    <input type="password" name="password" id="password" placeholder="********"
+                        autocomplete="current-password">
+                </div>
+                <div>
+                    <div id="login-button" class="mainButton">
+                        Login
+                    </div>
+                    <div class="login-tooltip">
+                        Are you still in 1999? Use<strong>&nbspSpidx&nbsp</strong> to Log in
+                    </div>
+                </div>
+                <div class="secondaryButton">Sign up</div>
+
+                <!-- Spidx Button -->
+                <div id="spidx-auth" class="spidx-auth"></div>
+
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>
