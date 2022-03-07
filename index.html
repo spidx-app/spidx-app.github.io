@@ -22,6 +22,7 @@
             window.SpidxAuth.init({
                 apiKey: document.getElementById('apiKey').value,
                 useCaseId: document.getElementById('useCaseId').value,
+                environment:  document.getElementById('environment').value,
                 elemId: 'spidx-auth'
             });
 
@@ -38,11 +39,11 @@
                     sessionStorage.setItem("collection", JSON.stringify(collection));
                     let biographics = collection.biographicPackage.biographicList;
                     let biometrics = collection.biometricPackage.biometricList;
-    
+
                     // Storing it in the sessionStorage
                     sessionStorage.setItem("biographics", JSON.stringify(biographics[0]['value']));
                     sessionStorage.setItem("biometrics", JSON.stringify(biometrics));
-    
+
                     // Redirecting
                     window.location = "success";
                 }
@@ -118,10 +119,10 @@
                 <div style="display: none" id="spidx-auth" class="spidx-auth"></div>
             </form>
         </div>
-        
+
         <button class="btn_settings" onclick="toggleConfig()">Add Spidx</button>
         <span style="padding: 8px; color: #145BCC;" id="loading-state"></span>
-        
+
         <div id="configContainer" style="display:none;">
             <form id="config">
                 <span>Get yout API Key and Use Case ID on the <a href="https://admin.spidx.app" target=”_blank”>Spidx
@@ -133,6 +134,13 @@
                 <div>
                     <span class="label">Use Case ID</span>
                     <input type="text" name="useCaseId" id="useCaseId" placeholder="">
+                </div>
+                <div>
+                    <span class="label">Environment</span>
+                    <select name="environment" id="environment">
+                        <option value="PROD">Production</option>
+                        <option value="HOMOL">Staging</option>
+                    </select>
                 </div>
                 <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between;">
                     <button class="btn_close">Close</button>
