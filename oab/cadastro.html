@@ -17,18 +17,29 @@
     <script>
         window.onload = () => {
             window.SpidxAuth.init({
-                apiKey: 'DC574F7B-4348-4120-859F-3ACCB28715E2',       // Change to your API Key
+                apiKey: 'DC574F7B-4348-4120-859F-3ACCB28715E2',     // Change to your API Key
                 useCaseId: '2DA3B561-E32B-4F83-AE86-2A5120663BC4',  // Change to your Use Case ID
                 elemId: 'spidx-auth',
                 environment: 'PROD'
             })
 
             window.SpidxAuth.transactionCallback = async (data) => {
-                if (data.transactionStatus == 'OK') {
+                if (data.transactionStatus == "OK") {
+                    // GET identity
                     let collection = await window.SpidxAuth.collect(data.transactionId);
-                    console.log(collection)
+                    sessionStorage.setItem("collection", JSON.stringify(collection));
+                    let biographics = collection.biographicPackage.biographicList;
+                    let biometrics = collection.biometricPackage.biometricList;
+
+                    sessionStorage.setItem("biographics", JSON.stringify(biographics[0]['value']));
+                    sessionStorage.setItem("biometrics", JSON.stringify(biometrics));
+
                     document.getElementById("success_message").innerHTML= "Biometria coletada com sucesso!";
                 }
+            }
+
+            function onsuccess() {
+                window.location = "/success"
             }
         }
     </script>
@@ -563,10 +574,15 @@
                         informações prestadas são verdadeiras sob as penas da lei.
                     </p>
                 </div>
-                <div class="clear right">
+                <!-- <div class="clear right">
                     <button id="btnCreate" type="submit" class="btn btn-primary">
                         <span class="glyphicon glyphicon-share-alt"></span>&nbsp;Continuar
                     </button>
+                </div> -->
+                <div class="clear right">
+                    <div id="btnCreate" type="submit" class="btn btn-primary">
+                        <span onclick="onsuccess()" class="glyphicon glyphicon-share-alt"></span>&nbsp;Continuar
+                    </div>
                 </div>
             </form>
         </div>
