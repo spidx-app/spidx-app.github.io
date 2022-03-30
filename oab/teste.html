@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>..:: Identidade do Advogado ::..</title>
+    <link href="https://www1.oab.org.br//CNAPre/Content/Css/bootstrap.css" rel="stylesheet" />
+    <link href="https://www1.oab.org.br//CNAPre/Scripts/jnotify/jnotify.css" rel="stylesheet" />
+    <link href="https://www1.oab.org.br//CNAPre/ViewStyles/Home/Index.css" rel="stylesheet" />
+    <!-- This will make Spidx Web Button responsive for smaller screens -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- The JavaScript library imported below will provide all the necessary files to add the Spidx button into your website. -->
+    <script src="https://resources.spidx.app/spidx_auth.js"></script>
+    <!-- <script src="https://resources-homol.spidx.app/spidx_auth.js"></script> -->
+
+    <script>
+        window.onload = () => {
+            window.SpidxAuth.init({
+                apiKey: 'DC574F7B-4348-4120-859F-3ACCB28715E2',       // Change to your API Key
+                useCaseId: '2DA3B561-E32B-4F83-AE86-2A5120663BC4',  // Change to your Use Case ID
+                elemId: 'spidx-auth',
+                environment: 'PROD'
+            })
+
+            window.SpidxAuth.transactionCallback = async (data) => {
+                if (data.transactionStatus == 'OK') {
+                    let collection = await window.SpidxAuth.collect(data.transactionId);
+                    console.log(collection)
+                    document.getElementById("success_message").innerHTML= "Biometria coletada com sucesso!";
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="line-top"></div>
+    <div id="form-register">
+        <div class="row-register">
+            <div class="cell-register marca-oab"></div>
+            <div class="cell-register desc-marca-oab">
+                DISTRITO FEDERAL
+            </div>
+        </div>
+        <div class="row-register">
+            <div class="cell-register texto-header">
+                FORMULÁRIO PARA INSCRIÇÃO
+            </div>
+        </div>
+        <div class="row-register">
+            <div class="cell-register" style="width: 165px;">
+            </div>
+        </div>
+        <div class="line-border"></div>
+        <p>&nbsp;</p>
+        <div>
+            <form action="https://www1.oab.org.br//CNAPre/Questions/Answers" enctype="multipart/form-data" id="form"
+                method="post"><input name="__RequestVerificationToken" type="hidden"
+                    value="qI2-nD9bnsHkdZjgOou5X1ItYxt0OtBVXs8jAis3IP0HJ4Ax6ii28qgkFlqzkO06gZCcg_4s8xOcFsctxGzEQA6BiN1ZKJMlxVYBlexiWUg1" /><input
+                    data-val="true" data-val-number="The field Int32 must be a number."
+                    data-val-required="The Int32 field is required." id="idtAdvo" name="idtAdvo" type="hidden"
+                    value="3001" /><input data-val="true" data-val-number="The field Int32 must be a number."
+                    data-val-required="The Int32 field is required." id="idenOgan" name="idenOgan" type="hidden"
+                    value="7" /><input data-val="true" data-val-number="The field Int32 must be a number."
+                    data-val-required="The Int32 field is required." id="codiTipoInsc" name="codiTipoInsc" type="hidden"
+                    value="2" />
+                <fieldset>
+                    <legend>
+                        As informações aqui prestadas são exigidas, de acordo com o Regimento Interno, para o ingresso
+                        no Quadro da Ordem dos Advogados do Brasil, Conselho Seccional - Distrito Federal
+                    </legend>
+                    <div>
+                        <p>
+
+                            <label for="txtPergunta1">
+                                Respondo ou respondi a: (Informar se responde qualquer tipo de processo, a&#231;&#227;o,
+                                inqu&#233;rito, processo administrativo, disciplinar, &#233;tico, etc.).
+                            </label>
+                            <textarea class="form-control required" cols="20" id="txtPergunta1" name="Pergunta1"
+                                rows="5" style="width: 100%">
+</textarea>
+                        </p>
+                        <br />
+                    </div>
+                    <div>
+                        <p>
+
+                            <label for="txtPergunta8">
+                                O requerente exerce atividade profissional ligada a &#243;rg&#227;os p&#250;blicos,
+                                institui&#231;&#245;es financeiras ou aut&#225;rquicas? Qual cargo/fun&#231;&#227;o e
+                                local?
+                            </label>
+                            <textarea class="form-control required" cols="20" id="txtPergunta8" name="Pergunta8"
+                                rows="5" style="width: 100%">
+</textarea>
+                        </p>
+                        <br />
+                    </div>
+                    <div>
+                        <p>
+
+                            <label for="txtPergunta9">
+                                Estabelecer&#225; a sede principal da Advocacia em qual cidade?
+                            </label>
+                            <textarea class="form-control required" cols="20" id="txtPergunta9" name="Pergunta9"
+                                rows="5" style="width: 100%">
+</textarea>
+                        </p>
+                        <br />
+                    </div>
+                    <div>
+                        <p>
+
+                            <label for="ddlPergunta10">
+                                Local para votar nas elei&#231;&#245;es da OAB?
+                            </label>
+                            <select class="form-control required" disabled="true" id="ddlPergunta10" name="Pergunta10"
+                                readonly="True">
+                                <option value="Conselho Federal">Conselho Federal</option>
+                                <option value="Conselho Seccional - Acre">Conselho Seccional - Acre</option>
+                                <option value="Conselho Seccional - Alagoas">Conselho Seccional - Alagoas</option>
+                                <option value="Conselho Seccional - Amapá">Conselho Seccional - Amap&#225;</option>
+                                <option value="Conselho Seccional - Amazonas">Conselho Seccional - Amazonas</option>
+                                <option value="Conselho Seccional - Bahia">Conselho Seccional - Bahia</option>
+                                <option value="Conselho Seccional - Ceará">Conselho Seccional - Cear&#225;</option>
+                                <option selected="selected" value="Conselho Seccional - Distrito Federal">Conselho
+                                    Seccional - Distrito Federal</option>
+                                <option value="Conselho Seccional - Espirito Santo">Conselho Seccional - Espirito Santo
+                                </option>
+                                <option value="Conselho Seccional - Goiás">Conselho Seccional - Goi&#225;s</option>
+                                <option value="Conselho Seccional - Maranhão">Conselho Seccional - Maranh&#227;o
+                                </option>
+                                <option value="Conselho Seccional - Mato Grosso">Conselho Seccional - Mato Grosso
+                                </option>
+                                <option value="Conselho Seccional - Mato Grosso do Sul">Conselho Seccional - Mato Grosso
+                                    do Sul</option>
+                                <option value="Conselho Seccional - Minas Gerais">Conselho Seccional - Minas Gerais
+                                </option>
+                                <option value="Conselho Seccional - Pará">Conselho Seccional - Par&#225;</option>
+                                <option value="Conselho Seccional - Paraíba">Conselho Seccional - Para&#237;ba</option>
+                                <option value="Conselho Seccional - Paraná">Conselho Seccional - Paran&#225;</option>
+                                <option value="Conselho Seccional - Pernambuco">Conselho Seccional - Pernambuco</option>
+                                <option value="Conselho Seccional - Piauí">Conselho Seccional - Piau&#237;</option>
+                                <option value="Conselho Seccional - Rio de Janeiro">Conselho Seccional - Rio de Janeiro
+                                </option>
+                                <option value="Conselho Seccional - Rio Grande do Norte">Conselho Seccional - Rio Grande
+                                    do Norte</option>
+                                <option value="Conselho Seccional - Rio Grande do Sul">Conselho Seccional - Rio Grande
+                                    do Sul</option>
+                                <option value="Conselho Seccional - Rondônia">Conselho Seccional - Rond&#244;nia
+                                </option>
+                                <option value="Conselho Seccional - Roraima">Conselho Seccional - Roraima</option>
+                                <option value="Conselho Seccional - Santa Catarina">Conselho Seccional - Santa Catarina
+                                </option>
+                                <option value="Conselho Seccional - São Paulo">Conselho Seccional - S&#227;o Paulo
+                                </option>
+                                <option value="Conselho Seccional - Sergipe">Conselho Seccional - Sergipe</option>
+                                <option value="Conselho Seccional - Tocantins">Conselho Seccional - Tocantins</option>
+                                <option value="Esacola Superior da Advocacia">Esacola Superior da Advocacia</option>
+                                <option value="Escola Superior de Advocacia - Acre">Escola Superior de Advocacia - Acre
+                                </option>
+                                <option value="Vale do Juruá ">Vale do Juru&#225; </option>
+                                <option value="OAB Editora">OAB Editora</option>
+                                <option value="Fundação Getúlio Vargas - FGV">Funda&#231;&#227;o Get&#250;lio Vargas -
+                                    FGV</option>
+                                <option value="Instituto dos Advogados Brasileiros - IAB">Instituto dos Advogados
+                                    Brasileiros - IAB</option>
+                                <option value="FIDA - Fundo de Integração e Desenvolvimento Assistencial dos Advogados">
+                                    FIDA - Fundo de Integra&#231;&#227;o e Desenvolvimento Assistencial dos Advogados
+                                </option>
+                                <option value="Escola Superior de Advocacia Nacional">Escola Superior de Advocacia
+                                    Nacional</option>
+                                <option value="Coordenação Nacional das Caixas de Assistências">Coordena&#231;&#227;o
+                                    Nacional das Caixas de Assist&#234;ncias</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label for="ddlSecoes">
+                                Subseção: (preencher este campo se não for votar na sede da Seccional)
+                            </label>
+                            <select class="form-control" id="ddlIdenOganFilha" name="subsecao">
+                                <option value="">Selecione o item</option>
+                                <option value="Águas Claras ">&#193;guas Claras </option>
+                                <option value="Brazlândia">Brazl&#226;ndia</option>
+                                <option value="Ceilândia">Ceil&#226;ndia</option>
+                                <option value="Gama">Gama</option>
+                                <option value="Guará">Guar&#225;</option>
+                                <option value="Núcleo Bandeirante">N&#250;cleo Bandeirante</option>
+                                <option value="Paranoá">Parano&#225;</option>
+                                <option value="Planaltina">Planaltina</option>
+                                <option value="Riacho Fundo e Recanto das Emas ">Riacho Fundo e Recanto das Emas
+                                </option>
+                                <option value="Samambaia">Samambaia</option>
+                                <option value="São Sebastião">S&#227;o Sebasti&#227;o</option>
+                                <option value="Sobradinho">Sobradinho</option>
+                                <option value="Taguatinga">Taguatinga</option>
+                            </select>
+                        </p>
+                        <br />
+                    </div>
+                    <div>
+                        <p>
+
+                            <label for="txtPergunta2">
+                                O requerente ocupa Mandato, Cargo, Servidor P&#250;blico (Qualquer &#193;rea),
+                                Fun&#231;&#227;o P&#250;blica ou Aut&#225;rquica? Qual?
+                            </label>
+                            <textarea class="form-control required" cols="20" id="txtPergunta2" name="Pergunta2"
+                                rows="5" style="width: 100%">
+</textarea>
+                        </p>
+                        <br />
+                    </div>
+                    <div>
+                        <p>
+
+                            <label for="txtPergunta3">
+                                Exerce fun&#231;&#227;o p&#250;blica em comiss&#227;o, fun&#231;&#227;o gratificada,
+                                cargo de diretor, etc? Qual? (Especifique).
+                            </label>
+                            <textarea class="form-control required" cols="20" id="txtPergunta3" name="Pergunta3"
+                                rows="5" style="width: 100%">
+</textarea>
+                        </p>
+                        <br />
+                    </div>
+                    <div>
+                        <p>
+
+                            <label for="txtPergunta4">
+                                &#201; diretor ou empregado de empresa privada, fun&#231;&#227;o p&#250;blica, sociedade
+                                economia mista ou outra entidade paraestatal? Qual?
+                            </label>
+                            <textarea class="form-control required" cols="20" id="txtPergunta4" name="Pergunta4"
+                                rows="5" style="width: 100%">
+</textarea>
+                        </p>
+                        <br />
+                    </div>
+                    <div>
+                        <p>
+
+                            <label for="txtPergunta5">
+                                Quais os cargos, fun&#231;&#245;es ou empregos da mesma natureza, anteriormente
+                                exercidos e a que t&#237;tulo e em que data se desvinculou deles?
+                            </label>
+                            <textarea class="form-control required" cols="20" id="txtPergunta5" name="Pergunta5"
+                                rows="5" style="width: 100%">
+</textarea>
+                        </p>
+                        <br />
+                    </div>
+                    <div>
+                        <p>
+
+                            <label for="txtPergunta6">
+                                Exerce (a que t&#237;tulo) outra atividade profissional? Qual?
+                            </label>
+                            <textarea class="form-control required" cols="20" id="txtPergunta6" name="Pergunta6"
+                                rows="5" style="width: 100%">
+</textarea>
+                        </p>
+                        <br />
+                    </div>
+                    <div>
+                        <p>
+
+                            <label for="txtPergunta7">
+                                Existindo qualquer fato ou circunst&#226;ncia que possa influir no julgamento sobre
+                                incompatibilidades ou impedimentos previstos no Estatuto, favor cit&#225;-los.
+                            </label>
+                            <textarea class="form-control required" cols="20" id="txtPergunta7" name="Pergunta7"
+                                rows="5" style="width: 100%">
+</textarea>
+                        </p>
+                        <br />
+                    </div>
+                    <div>
+                        <p>
+
+                            <label for="txtPergunta15">
+                                Informar o n&#250;mero de Whatsapp. (Caso n&#227;o tenha, informar &quot;N&#227;o
+                                possuo&quot;).
+                            </label>
+                            <textarea class="form-control required" cols="20" id="txtPergunta15" name="Pergunta15"
+                                rows="5" style="width: 100%">
+</textarea>
+                        </p>
+                        <br />
+                    </div>
+                    <div>
+                        <p>
+
+                            <label for="txtPergunta16">
+                                Autoriza o recebimento de informativos institucionais da OAB/DF? (Sim ou N&#227;o).
+                            </label>
+                            <textarea class="form-control required" cols="20" id="txtPergunta16" name="Pergunta16"
+                                rows="5" style="width: 100%">
+</textarea>
+                        </p>
+                        <br />
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Acrescentar os seguintes documentos obrigatórios(*) em PDF, máximo de 1Mb por arquivo:
+                    </legend>
+                    <input id="hfIdenAttachment" name="idenAttachment" type="hidden"
+                        value="d7620053-127f-4d3a-bfb9-bdcff66536ca" />
+                    <input id="hfTipoDoc" name="tipoDoc" type="hidden" value="" />
+                    <input id="fileupload" type="file" name="files" accept=".pdf, .PDF"
+                        data-url="https://www1.oab.org.br//CNAPre/Questions/Upload" style="display: none;" />
+                    <table class="table table-striped">
+                        <tr>
+                            <td>
+                                <p>
+
+                                    <label>Comprovante de realiza&#231;&#227;o de est&#225;gio prof. oferecido pela
+                                        inst. de ensino ou escrit. Advo: *</label>
+                                    <br />
+                                    <button type="button" class="btn btn-success btn-sm file" data-tipo-doc="21"><i
+                                            class="glyphicon glyphicon-paperclip"></i>&nbsp;<strong>Anexar</strong></button>
+                                    <strong class="help-block validate"
+                                        data-label="Comprovante de realiza&#231;&#227;o de est&#225;gio prof. oferecido pela inst. de ensino ou escrit. Advo"
+                                        data-ng-required="true"></strong>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+
+                                    <label>Certificado ou atestado expedido pela faculdade, atualizado. No caso
+                                        requerente bacharel, juntar diploma: *</label>
+                                    <br />
+                                    <button type="button" class="btn btn-success btn-sm file" data-tipo-doc="59"><i
+                                            class="glyphicon glyphicon-paperclip"></i>&nbsp;<strong>Anexar</strong></button>
+                                    <strong class="help-block validate"
+                                        data-label="Certificado ou atestado expedido pela faculdade, atualizado. No caso requerente bacharel, juntar diploma"
+                                        data-ng-required="true"></strong>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+
+                                    <label>Hist&#243;rico escolar (obrigat&#243;rio quando informado certificado de
+                                        conclus&#227;o): *</label>
+                                    <br />
+                                    <button type="button" class="btn btn-success btn-sm file" data-tipo-doc="68"><i
+                                            class="glyphicon glyphicon-paperclip"></i>&nbsp;<strong>Anexar</strong></button>
+                                    <strong class="help-block validate"
+                                        data-label="Hist&#243;rico escolar (obrigat&#243;rio quando informado certificado de conclus&#227;o)"
+                                        data-ng-required="true"></strong>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+
+                                    <label>Certid&#227;o Criminal da Justi&#231;a do Estado: *</label>
+                                    <br />
+                                    <button type="button" class="btn btn-success btn-sm file" data-tipo-doc="16"><i
+                                            class="glyphicon glyphicon-paperclip"></i>&nbsp;<strong>Anexar</strong></button>
+                                    <strong class="help-block validate"
+                                        data-label="Certid&#227;o Criminal da Justi&#231;a do Estado"
+                                        data-ng-required="true"></strong>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+
+                                    <label>Certid&#227;o Criminal da Justi&#231;a do Estado (do estado de origem):
+                                    </label>
+                                    <br />
+                                    <button type="button" class="btn btn-success btn-sm file" data-tipo-doc="71"><i
+                                            class="glyphicon glyphicon-paperclip"></i>&nbsp;<strong>Anexar</strong></button>
+                                    <strong class="help-block validate"
+                                        data-label="Certid&#227;o Criminal da Justi&#231;a do Estado  (do estado de origem)"
+                                        data-ng-required="false"></strong>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+
+                                    <label>Certid&#227;o Criminal da Justi&#231;a Federal: *</label>
+                                    <br />
+                                    <button type="button" class="btn btn-success btn-sm file" data-tipo-doc="2"><i
+                                            class="glyphicon glyphicon-paperclip"></i>&nbsp;<strong>Anexar</strong></button>
+                                    <strong class="help-block validate"
+                                        data-label="Certid&#227;o Criminal da Justi&#231;a Federal"
+                                        data-ng-required="true"></strong>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+
+                                    <label>Certid&#227;o Criminal da Justi&#231;a Federal (do estado de origem):
+                                        *</label>
+                                    <br />
+                                    <button type="button" class="btn btn-success btn-sm file" data-tipo-doc="70"><i
+                                            class="glyphicon glyphicon-paperclip"></i>&nbsp;<strong>Anexar</strong></button>
+                                    <strong class="help-block validate"
+                                        data-label="Certid&#227;o Criminal da Justi&#231;a Federal (do estado de origem)"
+                                        data-ng-required="true"></strong>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+
+                                    <label>Documento de Identidade (RG): *</label>
+                                    <br />
+                                    <button type="button" class="btn btn-success btn-sm file" data-tipo-doc="7"><i
+                                            class="glyphicon glyphicon-paperclip"></i>&nbsp;<strong>Anexar</strong></button>
+                                    <strong class="help-block validate" data-label="Documento de Identidade (RG)"
+                                        data-ng-required="true"></strong>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+
+                                    <label>Cadastro Pessoa F&#237;sica (CPF): *</label>
+                                    <br />
+                                    <button type="button" class="btn btn-success btn-sm file" data-tipo-doc="8"><i
+                                            class="glyphicon glyphicon-paperclip"></i>&nbsp;<strong>Anexar</strong></button>
+                                    <strong class="help-block validate" data-label="Cadastro Pessoa F&#237;sica (CPF)"
+                                        data-ng-required="true"></strong>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+
+                                    <label>T&#237;tulo de Eleitor: *</label>
+                                    <br />
+                                    <button type="button" class="btn btn-success btn-sm file" data-tipo-doc="9"><i
+                                            class="glyphicon glyphicon-paperclip"></i>&nbsp;<strong>Anexar</strong></button>
+                                    <strong class="help-block validate" data-label="T&#237;tulo de Eleitor"
+                                        data-ng-required="true"></strong>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+
+                                    <label>Certid&#227;o de Quita&#231;&#227;o Eleitoral: *</label>
+                                    <br />
+                                    <button type="button" class="btn btn-success btn-sm file" data-tipo-doc="6"><i
+                                            class="glyphicon glyphicon-paperclip"></i>&nbsp;<strong>Anexar</strong></button>
+                                    <strong class="help-block validate"
+                                        data-label="Certid&#227;o de Quita&#231;&#227;o Eleitoral"
+                                        data-ng-required="true"></strong>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+
+                                    <label>Certificado de Reservista (obrigat&#243;rio para homens at&#233; 45 anos):
+                                    </label>
+                                    <br />
+                                    <button type="button" class="btn btn-success btn-sm file" data-tipo-doc="67"><i
+                                            class="glyphicon glyphicon-paperclip"></i>&nbsp;<strong>Anexar</strong></button>
+                                    <strong class="help-block validate"
+                                        data-label="Certificado de Reservista (obrigat&#243;rio para homens at&#233; 45 anos)"
+                                        data-ng-required="false"></strong>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+
+                                    <label>Comprovante de resid&#234;ncia (&#225;gua, energia ou telefone fixo):
+                                        *</label>
+                                    <br />
+                                    <button type="button" class="btn btn-success btn-sm file" data-tipo-doc="11"><i
+                                            class="glyphicon glyphicon-paperclip"></i>&nbsp;<strong>Anexar</strong></button>
+                                    <strong class="help-block validate"
+                                        data-label="Comprovante de resid&#234;ncia (&#225;gua, energia ou telefone fixo)"
+                                        data-ng-required="true"></strong>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+
+                                    <label>Declara&#231;&#227;o Oficial de Cargos ou Fun&#231;&#227;o P&#250;blica
+                                        (Obrigat&#243;rio caso exer&#231;a): </label>
+                                    <br />
+                                    <button type="button" class="btn btn-success btn-sm file" data-tipo-doc="49"><i
+                                            class="glyphicon glyphicon-paperclip"></i>&nbsp;<strong>Anexar</strong></button>
+                                    <strong class="help-block validate"
+                                        data-label="Declara&#231;&#227;o Oficial de Cargos ou Fun&#231;&#227;o P&#250;blica (Obrigat&#243;rio caso exer&#231;a)"
+                                        data-ng-required="false"></strong>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+
+                                    <label>Comprovante de pagamento de inscri&#231;&#227;o: </label>
+                                    <br />
+                                    <button type="button" class="btn btn-success btn-sm file" data-tipo-doc="22"><i
+                                            class="glyphicon glyphicon-paperclip"></i>&nbsp;<strong>Anexar</strong></button>
+                                    <strong class="help-block validate"
+                                        data-label="Comprovante de pagamento de inscri&#231;&#227;o"
+                                        data-ng-required="false"></strong>
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <fieldset>
+                    <legend>Utilize o aplicativo Spidx para coletar a sua biometria:
+                    </legend>
+                    <input id="hfIdenAttachment" name="idenAttachment" type="hidden"
+                        value="d7620053-127f-4d3a-bfb9-bdcff66536ca" />
+                    <input id="hfTipoDoc" name="tipoDoc" type="hidden" value="" />
+                    <input id="fileupload" type="file" name="files" accept=".pdf, .PDF"
+                        data-url="https://www1.oab.org.br//CNAPre/Questions/Upload" style="display: none;" />
+                    <table class="table table-striped">
+                        <tr>
+                            <td>
+                                <p>
+
+                                    <label>Biometria</label>
+                                    <br />
+                                    <div class="clear left">
+                                        <div class="btn" >
+                                            <div style="height: 50px !important; width: 300px" data-layout_setup='with-button' id='spidx-auth'></div>
+                                        </div>
+                                    </div>
+                                    <span id="success_message" style="font-weight: 900; color: green;"></span> 
+                                    <strong class="help-block validate"
+                                        data-label="Comprovante de realiza&#231;&#227;o de est&#225;gio prof. oferecido pela inst. de ensino ou escrit. Advo"
+                                        data-ng-required="true"></strong>
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <div>
+                    <p>
+                        Ao clicar no botão continuar, o requerente declara que todos os documentos e todas as
+                        informações prestadas são verdadeiras sob as penas da lei.
+                    </p>
+                </div>
+                <div class="clear right">
+                    <button id="btnCreate" type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-share-alt"></span>&nbsp;Continuar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script
+        src="https://www1.oab.org.br//CNAPre/bundles/jquery?v=FVs3ACwOLIVInrAl5sdzR2jrCDmVOWFbZMY6g6Q0ulE1"></script>
+
+    <script
+        src="https://www1.oab.org.br//CNAPre/bundles/bootstrap?v=2Fz3B0iizV2NnnamQFrx-NbYJNTFeBJ2GM05SilbtQU1"></script>
+
+    <script type="text/javascript" src="https://www1.oab.org.br//CNAPre/ViewScripts/App/Global.js"></script>
+    <script type="text/javascript" src="https://www1.oab.org.br//CNAPre/Scripts/cfoab-string.js"></script>
+    <script type="text/javascript" src="https://www1.oab.org.br//CNAPre/Scripts/meio-mask/meiomask.min.js"></script>
+    <script type="text/javascript" src="https://www1.oab.org.br//CNAPre/Scripts/jnotify/jnotify.js"></script>
+    <script type="text/javascript"
+        src="https://www1.oab.org.br//CNAPre/Scripts/jvalidation/js/jquery.validation.js"></script>
+    <script type="text/javascript" src="https://www1.oab.org.br//CNAPre/ViewScripts/Home/Index.js"></script>
+    <script src="https://www1.oab.org.br//CNAPre/Scripts/plugins/fileupload/vendor/jquery.ui.widget.js"></script>
+    <script src="https://www1.oab.org.br//CNAPre/Scripts/plugins/fileupload/jquery.iframe-transport.js"></script>
+    <script src="https://www1.oab.org.br//CNAPre/Scripts/plugins/fileupload/jquery.fileupload.js"></script>
+    <script src="https://www1.oab.org.br//CNAPre/Scripts/plugins/fileupload/jquery.fileupload-process.js"></script>
+    <script>
+        var allowdTypes = '.pdf, .PDF',
+            maxMBFileUpload = '2000000';
+    </script>
+    <script src="https://www1.oab.org.br//CNAPre/ViewScripts/Questions/Index.js?version=637842461788186623"></script>
+</body>
+
+</html>
