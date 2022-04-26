@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta property="og:title" content="ACME Corporation">
+    <meta property="og:title" content="Organization Name">
     <meta property="og:description" content="A testing environment for your Spidx Use Cases">
     <meta property="og:image" content="https://spidx.app/wp-content/uploads/2022/02/logo-square-new.jpg">
 
@@ -16,20 +16,21 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
-    <title>ACME Corporation</title>
+    <title>Organization Name</title>
 
-    <script src="https://resources.spidx.app/spidx_auth.js"></script>
+    <script src="https://resources-homol.spidx.app/spidx_auth.js"></script>
 
     <script>
         window.onload = () => {
             window.SpidxAuth.init({
-                apiKey: 'DC574F7B-4348-4120-859F-3ACCB28715E2',       // Change to your API Key
-                useCaseId: '723C5939-F623-4E3D-9829-80D127E22ECF',  // Change to your Use Case ID
+                apiKey: '3FC83ACD-09B6-489C-9DAC-BC2CC4959E1C',     // Staging
+                useCaseId: 'B342ED64-21E0-462C-ADDC-FA92A9EA27B8',  // Full Onboarding
                 elemId: 'spidx-auth',
-                environment: 'PROD'
+                environment: 'HOMOL'
             })
 
             window.SpidxAuth.transactionCallback = async (data) => {
+                document.getElementById("loading-state").innerHTML = "Loading, please wait"
                 if (data.transactionStatus == "OK") {
                     // GET identity
                     let collection = await window.SpidxAuth.collect(data.transactionId);
@@ -82,7 +83,7 @@
         </div>
         <!-- content -->
         <div class="form-container">
-            <img class="logo" src="../images/acme_corp.png" alt="ACME Corp">
+            <img class="logo" src="./logo.png" alt="ACME Corp">
             <form action="">
                 <div>
                     <span class="label">E-mail</span>
@@ -105,9 +106,9 @@
 
                 <!-- Spidx Button -->
                 <div id="spidx-auth" class="spidx-auth"></div>
-
             </form>
         </div>
+        <span style="padding: 8px; color: #145BCC;" id="loading-state"></span>
 
     </div>
 </body>
