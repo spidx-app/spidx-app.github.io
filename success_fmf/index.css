@@ -22,6 +22,11 @@ h1 {
     color: #21232Aaa;
 }
 
+h2 {
+    text-align: center;
+    width: 100%;
+}
+
 .card {
  background-color: white;
  border: solid 1px #c4c4c4;
@@ -40,7 +45,7 @@ h1 {
     display: flex;
     align-items: center;
     border: solid .01px #ffffff;
-    background-color: #f2f2f26b;
+    /* background-color: #f2f2f26b; */
     padding: 8px;
     grid-auto-rows: minmax(min-content, max-content);
 }
