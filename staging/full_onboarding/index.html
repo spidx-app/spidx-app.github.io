@@ -10,7 +10,7 @@
     <meta property="og:image" content="https://spidx.app/wp-content/uploads/2022/02/logo-square-new.jpg">
 
     <link rel="stylesheet" type="text/css" href="index.css">
-    <link rel="stylesheet" type="text/css" href="../navbar.css">
+    <link rel="stylesheet" type="text/css" href="../../../navbar.css">
     <link href="http://fonts.cdnfonts.com/css/manrope" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -43,10 +43,10 @@
                     sessionStorage.setItem("biometrics", JSON.stringify(biometrics));
 
                     // Redirecting
-                    window.location = "../success";
+                    window.location = "/success";
                 }
                 else {
-                    window.location = "../deny";
+                    window.location = "/deny";
                 }
             }
         }
@@ -64,11 +64,9 @@
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="/staging_full_collection/">Full Collection</a>
-                <a href="/staging_full_onboarding/">Full Onboarding</a>
-                <a href="/staging_full_hand_collection/">Hand Collection</a>
-                <div class="dropdown-content">
-            </div>
+                <a href="/staging/full_collection/">Full Collection</a>
+                <a href="/staging/full_onboarding/">Full Onboarding</a>
+                <a href="/staging/full_hand_collection/">Hand Collection</a>
             </div>
         </div>
         <div class="dropdown">
@@ -77,7 +75,7 @@
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="/production_full_collection/">Full Collection</a>
+                <a href="/production/full_collection/">Full Collection</a>
             </div>
         </div>
     </div>

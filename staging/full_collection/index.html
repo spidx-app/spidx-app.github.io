@@ -5,26 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta property="og:title" content="Federación Mexicana de Fútbol Asociación">
+    <meta property="og:title" content="ACME Corporation">
     <meta property="og:description" content="A testing environment for your Spidx Use Cases">
     <meta property="og:image" content="https://spidx.app/wp-content/uploads/2022/02/logo-square-new.jpg">
 
     <link rel="stylesheet" type="text/css" href="index.css">
-    <link rel="stylesheet" type="text/css" href="../navbar.css">
+    <link rel="stylesheet" type="text/css" href="../../../navbar.css">
     <link href="http://fonts.cdnfonts.com/css/manrope" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+    <title>ACME Corporation</title>
 
-    <title>Federación Mexicana de Fútbol Asociación</title>
-
-    <script src="https://resources.spidx.app/spidx_auth.js"></script>
+    <script src="https://resources-homol.spidx.app/spidx_auth.js"></script>
 
     <script>
         window.onload = () => {
             window.SpidxAuth.init({
-                apiKey: '3FC83ACD-09B6-489C-9DAC-BC2CC4959E1C',
-                useCaseId: '3B1EF67E-08B1-465A-87F0-F07F6E8D2AFD',
+                apiKey: '3FC83ACD-09B6-489C-9DAC-BC2CC4959E1C',     // Staging
+                useCaseId: 'A75199D8-DD89-468F-B8F6-B9A30379B258',  // Full Collection
                 elemId: 'spidx-auth',
                 environment: 'HOMOL'
             })
@@ -43,10 +42,10 @@
                     sessionStorage.setItem("biometrics", JSON.stringify(biometrics));
 
                     // Redirecting
-                    window.location = "../success_fmf";
+                    window.location = "/success";
                 }
                 else {
-                    window.location = "../deny";
+                    window.location = "/deny";
                 }
             }
         }
@@ -54,6 +53,31 @@
 </head>
 
 <body>
+    <div class="navbar">
+        <a href="/">
+            <i class="fa fa-home"></i>
+        </a>
+        <div class="dropdown">
+            <button class="dropdownbtn">
+                Staging
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/staging/full_collection/">Full Collection</a>
+                <a href="/staging/full_onboarding/">Full Onboarding</a>
+                <a href="/staging/full_hand_collection/">Hand Collection</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdownbtn">
+                Production
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/production/full_collection/">Full Collection</a>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="logo-container">
         </div>

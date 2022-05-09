@@ -10,7 +10,7 @@
     <meta property="og:image" content="https://spidx.app/wp-content/uploads/2022/02/logo-square-new.jpg">
 
     <link rel="stylesheet" type="text/css" href="index.css">
-    <link rel="stylesheet" type="text/css" href="../navbar.css">
+    <link rel="stylesheet" type="text/css" href="../../navbar.css">
     <link href="http://fonts.cdnfonts.com/css/manrope" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -18,19 +18,18 @@
 
     <title>ACME Corporation</title>
 
-    <script src="https://resources-homol.spidx.app/spidx_auth.js"></script>
+    <script src="https://resources.spidx.app/spidx_auth.js"></script>
 
     <script>
         window.onload = () => {
             window.SpidxAuth.init({
-                apiKey: '3FC83ACD-09B6-489C-9DAC-BC2CC4959E1C',     // Staging
-                useCaseId: 'A75199D8-DD89-468F-B8F6-B9A30379B258',  // Full Collection
+                apiKey: 'DC574F7B-4348-4120-859F-3ACCB28715E2',       // Change to your API Key
+                useCaseId: '723C5939-F623-4E3D-9829-80D127E22ECF',  // Change to your Use Case ID
                 elemId: 'spidx-auth',
-                environment: 'HOMOL'
+                environment: 'PROD'
             })
 
             window.SpidxAuth.transactionCallback = async (data) => {
-                document.getElementById("loading-state").innerHTML = "Loading, please wait"
                 if (data.transactionStatus == "OK") {
                     // GET identity
                     let collection = await window.SpidxAuth.collect(data.transactionId);
@@ -43,10 +42,10 @@
                     sessionStorage.setItem("biometrics", JSON.stringify(biometrics));
 
                     // Redirecting
-                    window.location = "../success";
+                    window.location = "/success";
                 }
                 else {
-                    window.location = "../deny";
+                    window.location = "/deny";
                 }
             }
         }
@@ -64,11 +63,9 @@
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="/staging_full_collection/">Full Collection</a>
-                <a href="/staging_full_onboarding/">Full Onboarding</a>
-                <a href="/staging_full_hand_collection/">Hand Collection</a>
-                <div class="dropdown-content">
-            </div>
+                <a href="/staging/full_collection/">Full Collection</a>
+                <a href="/staging/full_onboarding/">Full Onboarding</a>
+                <a href="/staging/full_hand_collection/">Hand Collection</a>
             </div>
         </div>
         <div class="dropdown">
@@ -77,7 +74,7 @@
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="/production_full_collection/">Full Collection</a>
+                <a href="/production/full_collection/">Full Collection</a>
             </div>
         </div>
     </div>
@@ -109,9 +106,9 @@
 
                 <!-- Spidx Button -->
                 <div id="spidx-auth" class="spidx-auth"></div>
+
             </form>
         </div>
-        <span style="padding: 8px; color: #145BCC;" id="loading-state"></span>
 
     </div>
 </body>

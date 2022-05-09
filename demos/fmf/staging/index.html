@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta property="og:title" content="OAB">
+    <meta property="og:title" content="Federación Mexicana de Fútbol Asociación">
     <meta property="og:description" content="A testing environment for your Spidx Use Cases">
     <meta property="og:image" content="https://spidx.app/wp-content/uploads/2022/02/logo-square-new.jpg">
 
@@ -14,17 +14,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-    <title>OAB</title>
+
+    <title>Federación Mexicana de Fútbol Asociación</title>
 
     <script src="https://resources.spidx.app/spidx_auth.js"></script>
 
     <script>
         window.onload = () => {
             window.SpidxAuth.init({
-                apiKey: 'DC574F7B-4348-4120-859F-3ACCB28715E2',       
-                useCaseId: 'DE3F02A8-F0ED-4782-A13A-71778218C005',  
+                apiKey: '3FC83ACD-09B6-489C-9DAC-BC2CC4959E1C',
+                useCaseId: '3B1EF67E-08B1-465A-87F0-F07F6E8D2AFD',
                 elemId: 'spidx-auth',
-                environment: 'PROD'
+                environment: 'HOMOL'
             })
 
             window.SpidxAuth.transactionCallback = async (data) => {
@@ -41,18 +42,13 @@
                     sessionStorage.setItem("biometrics", JSON.stringify(biometrics));
 
                     // Redirecting
-                    window.location = "../success";
+                    window.location = "./success";
                 }
                 else {
-                    window.location = "../deny";
+                    window.location = "./deny";
                 }
             }
         }
-
-        function register() {
-            window.location = '/oab/cadastro.html';
-        }
-       
     </script>
 </head>
 
@@ -62,7 +58,7 @@
         </div>
         <!-- content -->
         <div class="form-container">
-            <img class="logo" src="./logo.jpeg" alt="ACME Corp">
+            <img class="logo" src="./logo.png" alt="ACME Corp">
             <form action="">
                 <div>
                     <span class="label">E-mail</span>
@@ -81,12 +77,10 @@
                         Are you still in 1999? Use<strong>&nbspSpidx&nbsp</strong> to Log in
                     </div>
                 </div>
-                <div onclick="register()" class="secondaryButton">Sign up</div>
+                <div class="secondaryButton">Sign up</div>
 
-                
                 <!-- Spidx Button -->
                 <div id="spidx-auth" class="spidx-auth"></div>
-                
             </form>
         </div>
         <span style="padding: 8px; color: #145BCC;" id="loading-state"></span>
