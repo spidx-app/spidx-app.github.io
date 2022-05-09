@@ -1,0 +1,36 @@
+* {
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100vw;
+    height: fit-content;
+}
+
+.card {
+    margin: 8px 0px;
+    min-width: 100px;
+    height: fit-content;
+    padding: 10px;
+    border: solid 1px #c4c4c4;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 2px 2px 10px rgba(1, 1, 1, 0.02);
+}
+
+.card:hover{
+    box-shadow: 0px 0px 20px rgba(1, 1, 1, 0.03);
+}
+
+a {
+    text-decoration: none;
+    color: #212121;
+}
