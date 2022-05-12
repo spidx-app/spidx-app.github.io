@@ -5,7 +5,7 @@
     color: #21232A;
 }
 body {
-    background-image: url("../production_fmf/background.webp");
+    background-image: url("../production/background.webp");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
