@@ -1,0 +1,81 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACME Corporation</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+
+    <script>
+        window.onload = () => {
+            var collection = JSON.parse(sessionStorage.getItem("collection"));
+            let biographics = collection.biographicPackage.biographicList;
+            let biometrics = collection.biometricPackage.biometricList;
+            let userInformation = collection.userInformation;
+
+            var user_name = document.getElementById("user_name")
+            var user_picture = document.getElementById("user_picture");
+
+            var download_fingerprint_button = document.createElement("a");
+
+            var shouldDownload = false;
+            var hasWSQimages = false;
+            if (Object.keys(biometrics).length > 1) {
+                shouldDownload = confirm("Do you want to download WSQ images?")
+            }
+
+            for (image in biometrics) {
+                // User photo
+                if (biometrics[image]['index'] == 10) {
+                    user_picture.src = 'data:image/png;base64,' + biometrics[image]['content'];
+                }
+                // User fingerprints
+                else {
+                    if (shouldDownload) {
+                        download_fingerprint_button.href = "data:image/png;base64," + biometrics[image]['content']; //Image Base64 Goes here
+                        download_fingerprint_button.download = "fingerprint_"+ image +".wsq";           
+                        download_fingerprint_button.click();
+                    }
+                }
+            }
+
+            var grid_picture = document.getElementsByClassName("grid-item-picture")[0];
+            grid_picture.style.gridRowEnd = Object.keys(biographics).length + 2;
+
+            var other_info = document.getElementsByClassName("grid")[0];
+
+            other_info.innerHTML += '\
+                <div> <span>Spidx Number</span></div> \
+                <div>' + userInformation.spidx + '</div>'
+
+            for (info in biographics) {
+                other_info.innerHTML += '\
+                <div> <span>' + biographics[info]['type'] + '</span></div> \
+                <div>' + biographics[info]['value'] + '</div>'
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <div class="card">
+        <h2>Verificado: ahora puedes descargar tu carta desde tu perfil</h2>
+        <div class="container">
+            <div class="grid">
+                <div class="grid-item-picture">
+                    <div class="image">
+                        <img id="user_picture" src="/images/check.png" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

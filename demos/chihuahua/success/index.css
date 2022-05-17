@@ -1,0 +1,84 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Manrope', sans-serif;
+    color: #21232A;
+}
+body {
+    background-image: url("../production/background.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 400;
+    color: #21232Aaa;
+}
+
+h2 {
+    text-align: center;
+    width: 100%;
+}
+
+.card {
+ background-color: white;
+ border: solid 1px #c4c4c4;
+ padding:  8px 16px;
+ border-radius: 8px;
+ max-width: 400px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    justify-content: flex-start;
+}
+
+.grid > * {
+    display: flex;
+    align-items: center;
+    border: solid .01px #ffffff;
+    /* background-color: #f2f2f26b; */
+    padding: 8px;
+    grid-auto-rows: minmax(min-content, max-content);
+}
+
+
+.grid-item-picture {
+    grid-row-start: 1;
+    grid-row-end: 0;
+    background-color: transparent;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    width: 150px;
+}
+
+#user_picture {
+    display: flex;
+    width: 100%;
+    object-fit: cover;
+}
+
+.primaryButton {
+    background-color: #145BCC;
+    color: white;
+    padding: 8px;
+    cursor: pointer;
+    margin: 8px;
+}
