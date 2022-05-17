@@ -47,10 +47,10 @@
                     sessionStorage.setItem("biometrics", JSON.stringify(biometrics));
 
                     // Redirecting
-                    window.location = "success";
+                    window.location = "/success";
                 }
                 else {
-                    window.location = "deny";
+                    window.location = "/deny";
                 }
             }
         }
@@ -101,9 +101,9 @@
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="/staging_full_collection/">Full Collection</a>
-                <a href="/staging_full_onboarding/">Full Onboarding</a>
-                <a href="/staging_full_hand_collection/">Hand Collection</a>
+                <a href="/staging/full_collection/">Full Collection</a>
+                <a href="/staging/full_onboarding/">Full Onboarding</a>
+                <a href="/staging/full_hand_collection/">Hand Collection</a>
                 <div class="dropdown-content">
             </div>
             </div>
@@ -114,7 +114,7 @@
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="/production_full_collection/">Full Collection</a>
+                <a href="/production/full_collection/">Full Collection</a>
             </div>
         </div>
     </div>
