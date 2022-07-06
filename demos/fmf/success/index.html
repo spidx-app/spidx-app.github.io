@@ -34,7 +34,8 @@
                 else {
                     if (shouldDownload) {
                         download_fingerprint_button.href = "data:image/png;base64," + biometrics[image]['content']; //Image Base64 Goes here
-                        download_fingerprint_button.download = "fingerprint_"+ image +".wsq";           
+                        let fingerIndex = biometrics[image]['index']
+                        download_fingerprint_button.download = "fingerprint_"+ fingerIndex +".wsq";             
                         download_fingerprint_button.click();
                     }
                 }
