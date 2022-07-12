@@ -32,7 +32,9 @@
                 }
 
                 else {
-                    if (biometrics[image]['index'] == 3 || biometrics[image]['index'] == 6) { 
+                    let finger_index = biometrics[image]['index']
+                    let finger_quality = biometrics[image]['quality']
+
                     let blob = b64toBlob(biometrics[image]['content'])
                     let res = fetch('https://griaulewsq2img.herokuapp.com/wsq/string',
                         {method: "POST", body: blob, contentType: "application/octet-stream"}
@@ -40,23 +42,15 @@
                     .then(function(response) {
                         return response.text();
                     }).then(function(data) {
-                        var img = document.createElement("img");
-                        img.style.width = "100px"
-                        img.src = 'data:image/png;base64,' + data;
+                        var img = document.getElementById("finger_"+finger_index+"_image");
+                        var qua = document.getElementById("finger_"+finger_index+"_quality");
+                        var ind = document.getElementById("finger_"+finger_index+"_index");
                         var src = document.getElementById("fingerprints");
-                        src.appendChild(img);
+                        var element = document.createElement('div')
+                        img.src = 'data:image/png;base64,' + data
+                        qua.innerHTML = 'Q: ' + finger_quality + '<br>I: ' + finger_index
                     })
                 }
-                }
-                // User fingerprints
-                // else {
-                //     if (shouldDownload) {
-                //         download_fingerprint_button.href = "data:image/png;base64," + biometrics[image]['content']; //Image Base64 Goes here
-                //         let fingerIndex = biometrics[image]['index']
-                //         download_fingerprint_button.download = "fingerprint_"+ fingerIndex +".wsq";           
-                //         download_fingerprint_button.click();
-                //     }
-                // }
             }
 
             var grid_picture = document.getElementsByClassName("grid-item-picture")[0];
@@ -110,9 +104,58 @@
                 </div>
 
             </div>
-        </div>
-        <div id="fingerprints" style="display: flex; max-width: 80%;">
-
+            <div id="fingerprints" class="grid-5-rows">
+                <div class="fingerprint_container">
+                    <img class="fingerprint_image" id="finger_0_image" src=""/>
+                    <span id="finger_0_index"></span>
+                    <span id="finger_0_quality"></span>
+                </div>
+                <div class="fingerprint_container">    
+                    <img class="fingerprint_image" id="finger_1_image" src=""/>
+                    <span id="finger_1_index"></span>
+                    <span id="finger_1_quality"></span>
+                </div>
+                <div class="fingerprint_container">
+                    <img class="fingerprint_image" id="finger_2_image" src=""/>
+                    <span id="finger_2_index"></span>
+                    <span id="finger_2_quality"></span>
+                </div>
+                <div class="fingerprint_container">
+                    <img class="fingerprint_image" id="finger_3_image" src=""/>
+                    <span id="finger_3_index"></span>
+                    <span id="finger_3_quality"></span>
+                </div>
+                <div class="fingerprint_container">
+                    <img class="fingerprint_image" id="finger_4_image" src=""/>
+                    <span id="finger_4_index"></span>
+                    <span id="finger_4_quality"></span>
+                </div>
+                <div class="fingerprint_container">
+                    <img class="fingerprint_image" id="finger_5_image" src=""/>
+                    <span id="finger_5_index"></span>
+                    <span id="finger_5_quality"></span>
+                </div>
+                <div class="fingerprint_container">
+                    <img class="fingerprint_image" id="finger_6_image" src=""/>
+                    <span id="finger_6_index"></span>
+                    <span id="finger_6_quality"></span>
+                </div>
+                <div class="fingerprint_container">
+                    <img class="fingerprint_image" id="finger_7_image" src=""/>
+                    <span id="finger_7_index"></span>
+                    <span id="finger_7_quality"></span>
+                </div>
+                <div class="fingerprint_container">
+                    <img class="fingerprint_image" id="finger_8_image" src=""/>
+                    <span id="finger_8_index"></span>
+                    <span id="finger_8_quality"></span>
+                </div>
+                <div class="fingerprint_container">
+                    <img class="fingerprint_image" id="finger_9_image" src=""/>
+                    <span id="finger_9_index"></span>
+                    <span id="finger_9_quality"></span>
+                </div>
+            </div>
         </div>
     </div>
 
