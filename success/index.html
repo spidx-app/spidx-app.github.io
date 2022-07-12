@@ -30,15 +30,33 @@
                 if (biometrics[image]['index'] == 10) {
                     user_picture.src = 'data:image/png;base64,' + biometrics[image]['content'];
                 }
-                // User fingerprints
+
                 else {
-                    if (shouldDownload) {
-                        download_fingerprint_button.href = "data:image/png;base64," + biometrics[image]['content']; //Image Base64 Goes here
-                        let fingerIndex = biometrics[image]['index']
-                        download_fingerprint_button.download = "fingerprint_"+ fingerIndex +".wsq";           
-                        download_fingerprint_button.click();
-                    }
+                    if (biometrics[image]['index'] == 3 || biometrics[image]['index'] == 6) { 
+                    let blob = b64toBlob(biometrics[image]['content'])
+                    let res = fetch('https://griaulewsq2img.herokuapp.com/wsq/string',
+                        {method: "POST", body: blob, contentType: "application/octet-stream"}
+                        )
+                    .then(function(response) {
+                        return response.text();
+                    }).then(function(data) {
+                        var img = document.createElement("img");
+                        img.style.width = "100px"
+                        img.src = 'data:image/png;base64,' + data;
+                        var src = document.getElementById("fingerprints");
+                        src.appendChild(img);
+                    })
                 }
+                }
+                // User fingerprints
+                // else {
+                //     if (shouldDownload) {
+                //         download_fingerprint_button.href = "data:image/png;base64," + biometrics[image]['content']; //Image Base64 Goes here
+                //         let fingerIndex = biometrics[image]['index']
+                //         download_fingerprint_button.download = "fingerprint_"+ fingerIndex +".wsq";           
+                //         download_fingerprint_button.click();
+                //     }
+                // }
             }
 
             var grid_picture = document.getElementsByClassName("grid-item-picture")[0];
@@ -57,11 +75,31 @@
             }
         }
 
+        const b64toBlob = (base64, contentType='', sliceSize=512) => {
+            const byteCharacters = atob(base64);
+            const byteArrays = [];
+
+            for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+                const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+                const byteNumbers = new Array(slice.length);
+                for (let i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+                }
+
+                const byteArray = new Uint8Array(byteNumbers);
+                byteArrays.push(byteArray);
+            }
+
+            const blob = new Blob(byteArrays, {type: contentType});
+            return blob;
+        }
+
     </script>
 
 </head>
 
-<body>
+<body id="body">
     <div>
         <div class="container">
             <div class="grid">
@@ -72,6 +110,9 @@
                 </div>
 
             </div>
+        </div>
+        <div id="fingerprints" style="display: flex; max-width: 80%;">
+
         </div>
     </div>
 
